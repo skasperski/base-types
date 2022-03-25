@@ -1,15 +1,3 @@
-if(SISL_FOUND)
-    message(STATUS "SISL found: ${SISL_LIBRARIES}")
-    list(APPEND OPTIONAL_HPP
-        Spline.hpp
-        Trajectory.hpp
-    )
-    list(APPEND OPTIONAL_CPP
-        Spline.cpp
-        Trajectory.cpp
-    )
-endif()
-
 rock_library(
     base-types 
         Acceleration.cpp
@@ -48,7 +36,6 @@ rock_library(
         samples/SonarBeam.cpp
         samples/SonarScan.cpp
         samples/Temperature.cpp
-        ${OPTIONAL_CPP}
     HEADERS
         Acceleration.hpp
         Angle.hpp
@@ -113,19 +100,8 @@ rock_library(
         samples/Wrenches.hpp
         samples/Event.hpp
         samples/EventArray.hpp
-        ${OPTIONAL_HPP}
     DEPS_PKGCONFIG 
         base-logging
         eigen3
 )
 
-if(SISL_FOUND)
-    target_link_libraries(base-types ${SISL_LIBRARIES})
-    install(FILES ${CMAKE_SOURCE_DIR}/src/Spline.hpp
-            DESTINATION include/base/geometry)
-    configure_file(base-types-sisl.pc.in ${CMAKE_BINARY_DIR}/base-types-sisl.pc @ONLY)
-    install(FILES ${CMAKE_BINARY_DIR}/base-types-sisl.pc DESTINATION lib/pkgconfig)
-endif()
-
-configure_file(base-lib.pc.in ${CMAKE_BINARY_DIR}/base-lib.pc @ONLY)
-install(FILES ${CMAKE_BINARY_DIR}/base-lib.pc DESTINATION lib/pkgconfig)

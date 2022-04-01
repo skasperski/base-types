@@ -1,10 +1,27 @@
 cmake_minimum_required(VERSION 3.1)
 project(base-types VERSION 1.0)
 
-find_package(PkgConfig REQUIRED)
 find_package(Eigen3 REQUIRED)
-
-pkg_check_modules(base-logging REQUIRED IMPORTED_TARGET base-logging)
 
 add_subdirectory(base)
 
+# Export the library interface
+install(EXPORT types-targets
+	NAMESPACE base::
+	DESTINATION lib/cmake/base
+)
+
+# Create and install the version file
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file("base-types-version.cmake"
+	VERSION ${BASE_TYPES_VERSION}
+	COMPATIBILITY SameMajorVersion
+)
+
+install(
+	FILES
+		base-types-config.cmake
+		${PROJECT_BINARY_DIR}/base-types-version.cmake
+	DESTINATION
+		lib/cmake/base
+)

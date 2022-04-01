@@ -46,7 +46,7 @@ target_include_directories(types
 target_link_libraries(types
 	PUBLIC
 		Eigen3::Eigen
-		PkgConfig::base-logging)
+)
 
 target_compile_features(types PUBLIC cxx_std_11)
 

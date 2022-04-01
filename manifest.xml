@@ -12,8 +12,6 @@
     <license>LGPL v2 or later</license>
 
     <depend package="eigen3" />
-    <depend package="base/cmake" />
-    <depend package="base/logging" />
 
     <tags>stable</tags>
 </package>

@@ -57,9 +57,12 @@ install(DIRECTORY ./
 )
 
 # Install the binaries
-install(TARGETS types EXPORT types-targets
-	ARCHIVE DESTINATION lib
-	LIBRARY DESTINATION lib
-	RUNTIME DESTINATION bin
+install(TARGETS types EXPORT types-targets)
+
+# Install pkg-config file
+configure_file(base-types.pc.in base-types.pc @ONLY)
+install(
+	FILES ${PROJECT_BINARY_DIR}/base/base-types.pc
+	DESTINATION lib/pkgconfig
 )
 

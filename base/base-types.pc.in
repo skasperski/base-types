@@ -3,11 +3,10 @@ exec_prefix=@CMAKE_INSTALL_PREFIX@
 libdir=${prefix}/lib
 includedir=${prefix}/include
 
-Name: @TARGET_NAME@
-Description: @PROJECT_DESCRIPTION@
+Name: base-types
+Description: Base types for robotic infrastructures.
 Version: @PROJECT_VERSION@
-Requires: @DEPS_PKGCONFIG@
-Libs: -L${libdir} -l@TARGET_NAME@
+Requires: eigen3
+Libs: -L${libdir} -lbase-types
 Cflags: -I${includedir}
-
 

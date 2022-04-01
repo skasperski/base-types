@@ -13,15 +13,15 @@ install(EXPORT types-targets
 
 # Create and install the version file
 include(CMakePackageConfigHelpers)
-write_basic_package_version_file("base-types-version.cmake"
-	VERSION ${BASE_TYPES_VERSION}
+write_basic_package_version_file("base-types-config-version.cmake"
 	COMPATIBILITY SameMajorVersion
 )
 
 install(
 	FILES
 		base-types-config.cmake
-		${PROJECT_BINARY_DIR}/base-types-version.cmake
+		${PROJECT_BINARY_DIR}/base-types-config-version.cmake
 	DESTINATION
 		lib/cmake/base
 )
+

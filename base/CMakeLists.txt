@@ -52,7 +52,7 @@ target_compile_features(types PUBLIC cxx_std_11)
 
 # Install header files
 install(DIRECTORY ./
-	DESTINATION include/base
+	DESTINATION ${INCLUDE_DESTINATION}
 	FILES_MATCHING PATTERN "*.hpp"
 )
 
@@ -63,6 +63,6 @@ install(TARGETS types EXPORT types-targets)
 configure_file(base-types.pc.in base-types.pc @ONLY)
 install(
 	FILES ${PROJECT_BINARY_DIR}/base/base-types.pc
-	DESTINATION lib/pkgconfig
+	DESTINATION ${PKGCONFIG_DESTINATION}
 )
 

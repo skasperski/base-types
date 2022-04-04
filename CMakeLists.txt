@@ -8,7 +8,7 @@ add_subdirectory(base)
 # Export the library interface
 install(EXPORT types-targets
 	NAMESPACE base::
-	DESTINATION lib/cmake/base
+	DESTINATION lib/cmake/base-types
 )
 
 # Create and install the version file
@@ -22,6 +22,6 @@ install(
 		base-types-config.cmake
 		${PROJECT_BINARY_DIR}/base-types-config-version.cmake
 	DESTINATION
-		lib/cmake/base
+		lib/cmake/base-types
 )
 

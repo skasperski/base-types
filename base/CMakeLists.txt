@@ -48,6 +48,11 @@ target_link_libraries(types
 		Eigen3::Eigen
 )
 
+set_target_properties(types PROPERTIES
+	OUTPUT_NAME base-types
+	POSITION_INDEPENDENT_CODE ON
+)
+
 target_compile_features(types PUBLIC cxx_std_11)
 
 # Install header files

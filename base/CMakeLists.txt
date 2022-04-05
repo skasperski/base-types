@@ -40,7 +40,7 @@ add_library(types
 target_include_directories(types
 	PUBLIC
 		$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>
-		$<INSTALL_INTERFACE:include>
+		$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
 target_link_libraries(types
@@ -51,13 +51,13 @@ target_link_libraries(types
 target_compile_features(types PUBLIC cxx_std_11)
 
 # Install header files
-install(DIRECTORY ./
-	DESTINATION ${INCLUDE_DESTINATION}
+install(DIRECTORY ../base
+	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 	FILES_MATCHING PATTERN "*.hpp"
 )
 
 # Install the binaries
-install(TARGETS types EXPORT types-targets)
+install(TARGETS types EXPORT base-types-targets)
 
 # Install pkg-config file
 configure_file(base-types.pc.in base-types.pc @ONLY)
